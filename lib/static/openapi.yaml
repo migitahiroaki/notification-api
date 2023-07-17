@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: notification-api
+  version: 1.0.0
+paths:
+  /device:
+    post:
+      security:
+        - bearerAuth: []
+      summary: create platform endpoint
+      operationId: CreatePlatformEndpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEndpoint'
+      responses:
+        '200':
+          description: endpoint created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointAttr'
+        '400':
+          description: invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+        '500':
+          description: server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonError'
+components:
+  schemas:
+    CreateEndpoint:
+      type: object
+      properties:
+        deviceToken:
+          type: string
+      required:
+        - deviceToken
+    EndpointAttr:
+      type: object
+      properties:
+        endpointId:
+          type: string
+          format: uuid
+    CommonError:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      name: Authorization
+      type: apiKey
+      in: header
+      scheme: bearer
+      bearerFormat: JWT

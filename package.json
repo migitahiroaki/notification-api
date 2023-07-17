@@ -1,6 +1,7 @@
 {
   "name": "cdk",
   "version": "0.1.0",
+  "license": "UNLICENSED",
   "bin": {
     "cdk": "bin/cdk.js"
   },
@@ -8,20 +9,24 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk --profile cdk",
+    "diff": "cdk diff --profile cdk",
+    "deploy": "cdk deploy --profile cdk"
   },
   "devDependencies": {
-    "aws-cdk": "2.29.0",
     "@types/jest": "^27.5.2",
     "@types/node": "10.17.27",
-    "@types/prettier": "2.6.0",
+    "@types/prettier": "2.6.1",
+    "aws-cdk": "2.32.1",
     "jest": "^27.5.1",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.8.1",
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.29.0",
-    "constructs": "^10.0.0"
+    "@alma-cdk/openapix": "^0.0.50",
+    "aws-cdk-lib": "2.32.1",
+    "constructs": "^10.0.0",
+    "tslint": "^6.1.3"
   }
 }
