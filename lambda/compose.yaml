@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  lambda-local:
+    container_name: firebase-authorizer
+    build: ./firebase-authorizer
+    volumes:
+      - $HOME/.firebase/:/root/.firebase/
+    ports:
+      - '9000:8080'
+    env_file:
+      - ./firebase-authorizer/.env
